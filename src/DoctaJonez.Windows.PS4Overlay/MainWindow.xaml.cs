@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using PS4RemotePlayInterceptor;
+
 namespace DoctaJonez.Windows.PS4Overlay
 {
     /// <summary>
