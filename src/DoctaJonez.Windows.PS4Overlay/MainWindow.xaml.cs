@@ -232,6 +232,47 @@ namespace DoctaJonez.Windows.PS4Overlay
                 RaiseStateChanged();
             }
         }
+        private byte _lStickX = 127;
+        public byte LStickX
+        {
+            get => _lStickX;
+            set
+            {
+                _lStickX = value;
+                RaiseStateChanged();
+            }
+        }
+
+        private byte _lStickY = 127;
+        public byte LStickY
+        {
+            get => _lStickY;
+            set
+            {
+                _lStickY = value;
+                RaiseStateChanged();
+            }
+        }
+        private byte _rStickX = 127;
+        public byte RStickX
+        {
+            get => _rStickX;
+            set
+            {
+                _rStickX = value;
+                RaiseStateChanged();
+            }
+        }
+        private byte _rStickY = 127;
+        public byte RStickY
+        {
+            get => _rStickY;
+            set
+            {
+                _rStickY = value;
+                RaiseStateChanged();
+            }
+        }
     }
 
     public class ReportFactory
@@ -243,6 +284,10 @@ namespace DoctaJonez.Windows.PS4Overlay
             report.SetDPad(GetDpad(state));
             report.SetButtons(GetButtons(state));
             report.SetSpecialButtons(GetSpecialButtons(state));
+            report.SetAxis(DualShock4Axes.LeftThumbX, state.LStickX);
+            report.SetAxis(DualShock4Axes.LeftThumbY, state.LStickY);
+            report.SetAxis(DualShock4Axes.RightThumbX, state.RStickX);
+            report.SetAxis(DualShock4Axes.RightThumbY, state.RStickY);
 
             return report;
         }
@@ -376,9 +421,6 @@ namespace DoctaJonez.Windows.PS4Overlay
             _client = new ViGEmClient();
             _controller = new DualShock4Controller(_client);
             _reportFactory = new ReportFactory();
-            _ds4State.StateChanged += _ds4State_StateChanged;
-
-            _controller.Connect();
         }
 
         private void _ds4State_StateChanged()
@@ -594,52 +636,7 @@ namespace DoctaJonez.Windows.PS4Overlay
         {
             _ds4State.PlayStation = false;
         }
-
-        private void Window_PreviewTouchDown(object sender, TouchEventArgs e)
-        {
-            var position = Mouse.GetPosition(this);
-            Status.Text = $"X:{position.X} Y:{position.Y}";
-        }
-
-        private void Window_PreviewTouchUp(object sender, TouchEventArgs e)
-        {
-
-        }
-
-        private readonly GeoCoordinate MAX = new GeoCoordinate(90, 90);
-
-        private void Window_MouseMove(object sender, MouseEventArgs e)
-        {
-            //var position = e.GetPosition(this);
-
-            //GeoCoordinate left = _lStickCurrent == null ? MAX : new GeoCoordinate(_lStickCurrent.Value.X / 1000d, _lStickCurrent.Value.Y / 1000d);
-            //GeoCoordinate right = _rStickCurrent == null ? MAX : new GeoCoordinate(_rStickCurrent.Value.X / 1000d, _rStickCurrent.Value.Y / 1000d);
-
-            //var current = new GeoCoordinate(position.X / 1000d, position.Y / 1000d);
-
-            //var leftDelta = current.GetDistanceTo(left);
-            //var rightDelta = current.GetDistanceTo(right);
-
-            //if (_lStickStart != null && leftDelta < rightDelta)
-            //{
-            //    var x = _lStickCurrent.Value.X - _lStickStart.Value.X;
-            //    var y = _lStickCurrent.Value.Y - _lStickStart.Value.Y;
-
-            //    Status.Text = $"Left stick ({x}, {y})";
-            //}
-            //else if (_rStickCurrent != null)
-            //{
-            //    var x = _rStickCurrent.Value.X - _rStickStart.Value.X;
-            //    var y = _rStickCurrent.Value.Y - _rStickStart.Value.Y;
-
-            //    Status.Text = $"Right stick ({x}, {y})";
-            //}
-            //else
-            //{
-            //    Status.Text = $"Mouse move {position.X}, {position.Y}";
-            //}
-        }
-
+                
         private TouchPoint _lStickStart = null;
         private TouchPoint _lStickCurrent = null;
 
@@ -653,6 +650,9 @@ namespace DoctaJonez.Windows.PS4Overlay
         {
             _lStickStart = null;
             _lStickCurrent = null;
+
+            _ds4State.LStickX = 127;
+            _ds4State.LStickY = 127;
         }
 
         private TouchPoint _rStickStart = null;
@@ -668,6 +668,64 @@ namespace DoctaJonez.Windows.PS4Overlay
         {
             _rStickStart = null;
             _rStickCurrent = null;
+
+            _ds4State.RStickX = 127;
+            _ds4State.RStickY = 127;
+        }
+
+        private void LStick_TouchMove(object sender, TouchEventArgs e)
+        { 
+            _lStickCurrent = e.GetTouchPoint(this);
+            _lStickStart = _lStickStart ?? _lStickCurrent;
+
+            var x = _lStickCurrent.Position.X - _lStickStart.Position.X;
+            var y = _lStickCurrent.Position.Y - _lStickStart.Position.Y;
+
+            _ds4State.LStickX = MassageDelta(x);
+            _ds4State.LStickY = MassageDelta(y);
+        }
+
+        private int _deadzone = 10;
+
+        private byte MassageDelta(double delta)
+        {
+            // "zero" is 128
+            delta = delta + 128;
+
+            if (delta > byte.MaxValue)
+            {
+                delta = byte.MaxValue;
+            }
+            else if (delta < byte.MinValue)
+            {
+                delta = byte.MinValue;
+            }
+
+            if (-_deadzone <= delta && delta <= _deadzone)
+            {
+                delta = 0;
+            }
+
+            return (byte)delta;
+        }
+
+        private void RStick_TouchMove(object sender, TouchEventArgs e)
+        {
+            _rStickCurrent = e.GetTouchPoint(this);
+            _rStickStart = _rStickStart ?? _rStickCurrent;
+                        
+            var x = _rStickCurrent.Position.X - _rStickStart.Position.X;
+            var y = _rStickCurrent.Position.Y - _rStickStart.Position.Y;
+
+            _ds4State.RStickX = MassageDelta(x);
+            _ds4State.RStickY = MassageDelta(y);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            _ds4State.StateChanged += _ds4State_StateChanged;
+
+            _controller.Connect();
         }
     }
 }

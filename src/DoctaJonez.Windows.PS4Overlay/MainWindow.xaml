@@ -8,9 +8,7 @@
         Title="MainWindow" Height="450" Width="800"
         WindowState="Maximized"
         WindowStyle="None"
-        PreviewTouchDown="Window_PreviewTouchDown"
-        PreviewTouchUp="Window_PreviewTouchUp"
-        MouseMove="Window_MouseMove"
+        Loaded="Window_Loaded"
         AllowsTransparency="True" Background="{x:Null}" Deactivated="MainWindow_OnDeactivated" Closed="Window_Closed">
     <Grid>
         <Grid.RowDefinitions>
@@ -34,13 +32,13 @@
             <ColumnDefinition Width="80" />
             <ColumnDefinition Width="80" />
         </Grid.ColumnDefinitions>
-        <TextBlock Name="Status" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2" Opacity="1" Background="White" Visibility="Hidden">Test, hello</TextBlock>
+        <TextBlock Name="Status" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="1" Opacity="1" Background="White" Visibility="Hidden">Test, hello</TextBlock>
         <Button Name="L1" Grid.Column="0" Grid.Row="2" Opacity="0.25" PreviewTouchDown="L1_PreviewTouchDown" PreviewTouchUp="L1_PreviewTouchUp"></Button>
         <Button Name="L2" Grid.Column="0" Grid.Row="1" Opacity="0.25" PreviewTouchDown="L2_PreviewTouchDown" PreviewTouchUp="L2_PreviewTouchUp"></Button>
         <Button Name="R1" Grid.Column="8" Grid.Row="2" Opacity="0.25" PreviewTouchDown="R1_PreviewTouchDown" PreviewTouchUp="R1_PreviewTouchUp"></Button>
         <Button Name="R2" Grid.Column="8" Grid.Row="1" Opacity="0.25" PreviewTouchDown="R2_PreviewTouchDown" PreviewTouchUp="R2_PreviewTouchUp"></Button>
-        <Button Name="LStick" Grid.Column="3" Grid.Row="5" Grid.RowSpan="2" Opacity="0" PreviewTouchDown="LStick_PreviewTouchDown" PreviewTouchUp="LStick_PreviewTouchUp"></Button>
-        <Button Name="RStick" Grid.Column="5" Grid.Row="5" Grid.RowSpan="2" Opacity="0" PreviewTouchDown="RStick_PreviewTouchDown" PreviewTouchUp="RStick_PreviewTouchUp"></Button>
+        <Canvas Name="LStick" Grid.Column="3" Grid.Row="2" Grid.RowSpan="5" Opacity="0.01" TouchMove="LStick_TouchMove" PreviewTouchUp="LStick_PreviewTouchUp" Background="White"></Canvas>
+        <Canvas Name="RStick" Grid.Column="5" Grid.Row="2" Grid.RowSpan="5" Opacity="0.01" TouchMove="RStick_TouchMove" PreviewTouchUp="RStick_PreviewTouchUp" Background="White"></Canvas>
         <Button Name="PlayStation" Grid.Column="4" Grid.Row="5" Opacity="0.25" PreviewTouchDown="PlayStation_PreviewTouchDown" PreviewTouchUp="PlayStation_PreviewTouchUp"></Button>
         <Button Name="Share" Grid.Column="2" Grid.Row="1" Opacity="0.25" PreviewTouchDown="Share_PreviewTouchDown" PreviewTouchUp="Share_PreviewTouchUp"></Button>
         <Button Name="Options" Grid.Column="6" Grid.Row="1" Opacity="0.25" PreviewTouchDown="Options_PreviewTouchDown" PreviewTouchUp="Options_PreviewTouchUp"></Button>
