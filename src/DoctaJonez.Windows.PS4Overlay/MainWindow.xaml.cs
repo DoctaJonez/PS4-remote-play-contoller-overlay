@@ -405,203 +405,203 @@ namespace DoctaJonez.Windows.PS4Overlay
             _controller.SendReport(report);
         }
 
-        private void Left_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void Left_PreviewTouchDown(object sender, TouchEventArgs e)
         {
             _ds4State.DPadLeft = true;
         }
 
-        private void Left_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void Left_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _ds4State.DPadLeft = false;
         }
 
-        private void Up_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void Up_PreviewTouchDown(object sender, TouchEventArgs e)
         {
             _ds4State.DPadUp = true;
         }
 
-        private void Up_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void Up_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _ds4State.DPadUp = false;
         }
 
-        private void Right_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void Right_PreviewTouchDown(object sender, TouchEventArgs e)
         {
             _ds4State.DPadRight = true;
         }
 
-        private void Right_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void Right_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _ds4State.DPadRight = false;
         }
 
-        private void Down_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void Down_PreviewTouchDown(object sender, TouchEventArgs e)
         {
             _ds4State.DPadDown = true;
         }
 
-        private void Down_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void Down_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _ds4State.DPadDown = false;
         }
 
-        private void Square_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void Square_PreviewTouchDown(object sender, TouchEventArgs e)
         {
             _ds4State.Square = true;
         }
 
-        private void Square_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void Square_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _ds4State.Square = false;
         }
 
-        private void Triangle_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void Triangle_PreviewTouchDown(object sender, TouchEventArgs e)
         {
             _ds4State.Triangle = true;
         }
 
-        private void Triangle_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void Triangle_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _ds4State.Triangle = false;
         }
 
-        private void Circle_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void Circle_PreviewTouchDown(object sender, TouchEventArgs e)
         {
             _ds4State.Circle = true;
         }
 
-        private void Circle_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void Circle_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _ds4State.Circle = false;
         }
 
-        private void Cross_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void Cross_PreviewTouchDown(object sender, TouchEventArgs e)
         {
             _ds4State.Cross = true;
         }
 
-        private void Cross_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void Cross_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _ds4State.Cross = false;
         }
 
-        private void LeftDown_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void LeftDown_PreviewTouchDown(object sender, TouchEventArgs e)
         {
             _ds4State.DPadLeftDown = true;
         }
 
-        private void LeftDown_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void LeftDown_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _ds4State.DPadLeftDown = false;
         }
 
-        private void RightDown_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void RightDown_PreviewTouchDown(object sender, TouchEventArgs e)
         {
             _ds4State.DPadRightDown = true;
         }
 
-        private void RightDown_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void RightDown_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _ds4State.DPadRightDown = false;
         }
 
-        private void LeftUp_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void LeftUp_PreviewTouchDown(object sender, TouchEventArgs e)
         {
             _ds4State.DPadLeftUp = true;
         }
 
-        private void LeftUp_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void LeftUp_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _ds4State.DPadLeftUp = false;
         }
 
-        private void RightUp_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void RightUp_PreviewTouchDown(object sender, TouchEventArgs e)
         {
             _ds4State.DPadRightUp = true;
         }
 
-        private void RightUp_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void RightUp_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _ds4State.DPadRightUp = false;
         }
 
-        private void L1_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void L1_PreviewTouchDown(object sender, TouchEventArgs e)
         {
             _ds4State.L1 = true;
         }
 
-        private void L1_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void L1_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _ds4State.L1 = false;
         }
 
-        private void L2_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void L2_PreviewTouchDown(object sender, TouchEventArgs e)
         {
             _ds4State.L2 = true;
         }
 
-        private void L2_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void L2_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _ds4State.L2 = false;
         }
 
-        private void R1_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void R1_PreviewTouchDown(object sender, TouchEventArgs e)
         {
             _ds4State.R1 = true;
         }
 
-        private void R1_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void R1_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _ds4State.R1 = false;
         }
 
-        private void R2_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void R2_PreviewTouchDown(object sender, TouchEventArgs e)
         {
             _ds4State.R2 = true;
         }
 
-        private void R2_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void R2_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _ds4State.R2 = false;
         }
 
-        private void Options_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void Options_PreviewTouchDown(object sender, TouchEventArgs e)
         {
             _ds4State.Options = true;
         }
 
-        private void Options_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void Options_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _ds4State.Options = false;
         }
 
-        private void Share_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void Share_PreviewTouchDown(object sender, TouchEventArgs e)
         {
             _ds4State.Share = true;
         }
 
-        private void Share_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void Share_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _ds4State.Share = false;
         }
 
-        private void PlayStation_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void PlayStation_PreviewTouchDown(object sender, TouchEventArgs e)
         {
             _ds4State.PlayStation = true;
         }
 
-        private void PlayStation_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void PlayStation_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _ds4State.PlayStation = false;
         }
 
-        private void Window_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void Window_PreviewTouchDown(object sender, TouchEventArgs e)
         {
             var position = Mouse.GetPosition(this);
             Status.Text = $"X:{position.X} Y:{position.Y}";
         }
 
-        private void Window_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void Window_PreviewTouchUp(object sender, TouchEventArgs e)
         {
 
         }
@@ -640,31 +640,31 @@ namespace DoctaJonez.Windows.PS4Overlay
             //}
         }
 
-        private Point? _lStickStart = null;
-        private Point? _lStickCurrent = null;
+        private TouchPoint _lStickStart = null;
+        private TouchPoint _lStickCurrent = null;
 
-        private void LStick_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void LStick_PreviewTouchDown(object sender, TouchEventArgs e)
         {
-            _lStickStart = e.GetPosition(this);
+            _lStickStart = e.GetTouchPoint(this);
             _lStickCurrent = _lStickStart;
         }
 
-        private void LStick_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void LStick_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _lStickStart = null;
             _lStickCurrent = null;
         }
 
-        private Point? _rStickStart = null;
-        private Point? _rStickCurrent = null;
+        private TouchPoint _rStickStart = null;
+        private TouchPoint _rStickCurrent = null;
 
-        private void RStick_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void RStick_PreviewTouchDown(object sender, TouchEventArgs e)
         {
-            _rStickStart = e.GetPosition(this);
+            _rStickStart = e.GetTouchPoint(this);
             _rStickCurrent = _rStickStart;
         }
 
-        private void RStick_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void RStick_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _rStickStart = null;
             _rStickCurrent = null;

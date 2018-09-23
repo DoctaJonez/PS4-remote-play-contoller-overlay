@@ -8,8 +8,8 @@
         Title="MainWindow" Height="450" Width="800"
         WindowState="Maximized"
         WindowStyle="None"
-        PreviewMouseDown="Window_PreviewMouseDown"
-        PreviewMouseUp="Window_PreviewMouseUp"
+        PreviewTouchDown="Window_PreviewTouchDown"
+        PreviewTouchUp="Window_PreviewTouchUp"
         MouseMove="Window_MouseMove"
         AllowsTransparency="True" Background="{x:Null}" Deactivated="MainWindow_OnDeactivated" Closed="Window_Closed">
     <Grid>
@@ -35,26 +35,26 @@
             <ColumnDefinition Width="80" />
         </Grid.ColumnDefinitions>
         <TextBlock Name="Status" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2" Opacity="1" Background="White" Visibility="Hidden">Test, hello</TextBlock>
-        <Button Name="L1" Grid.Column="0" Grid.Row="2" Opacity="0.25" PreviewMouseDown="L1_PreviewMouseDown" PreviewMouseUp="L1_PreviewMouseUp"></Button>
-        <Button Name="L2" Grid.Column="0" Grid.Row="1" Opacity="0.25" PreviewMouseDown="L2_PreviewMouseDown" PreviewMouseUp="L2_PreviewMouseUp"></Button>
-        <Button Name="R1" Grid.Column="8" Grid.Row="2" Opacity="0.25" PreviewMouseDown="R1_PreviewMouseDown" PreviewMouseUp="R1_PreviewMouseUp"></Button>
-        <Button Name="R2" Grid.Column="8" Grid.Row="1" Opacity="0.25" PreviewMouseDown="R2_PreviewMouseDown" PreviewMouseUp="R2_PreviewMouseUp"></Button>
-        <Button Name="LStick" Grid.Column="3" Grid.Row="5" Grid.RowSpan="2" Opacity="0" PreviewMouseDown="LStick_PreviewMouseDown" PreviewMouseUp="LStick_PreviewMouseUp"></Button>
-        <Button Name="RStick" Grid.Column="5" Grid.Row="5" Grid.RowSpan="2" Opacity="0" PreviewMouseDown="RStick_PreviewMouseDown" PreviewMouseUp="RStick_PreviewMouseUp"></Button>
-        <Button Name="PlayStation" Grid.Column="4" Grid.Row="5" Opacity="0.25" PreviewMouseDown="PlayStation_PreviewMouseDown" PreviewMouseUp="PlayStation_PreviewMouseUp"></Button>
-        <Button Name="Share" Grid.Column="2" Grid.Row="1" Opacity="0.25" PreviewMouseDown="Share_PreviewMouseDown" PreviewMouseUp="Share_PreviewMouseUp"></Button>
-        <Button Name="Options" Grid.Column="6" Grid.Row="1" Opacity="0.25" PreviewMouseDown="Options_PreviewMouseDown" PreviewMouseUp="Options_PreviewMouseUp"></Button>
-        <Button Name="Left" Grid.Column="0" Grid.Row="5" Opacity="0.25" PreviewMouseDown="Left_PreviewMouseDown" PreviewMouseUp="Left_PreviewMouseUp"></Button>
-        <Button Name="LeftUp" Grid.Column="0" Grid.Row="4" Opacity="0.25" PreviewMouseDown="LeftUp_PreviewMouseDown" PreviewMouseUp="LeftUp_PreviewMouseUp"></Button>
-        <Button Name="LeftDown" Grid.Column="0" Grid.Row="6" Opacity="0.25" PreviewMouseDown="LeftDown_PreviewMouseDown" PreviewMouseUp="LeftDown_PreviewMouseUp"></Button>
-        <Button Name="Up" Grid.Column="1" Grid.Row="4" Opacity="0.25" PreviewMouseDown="Up_PreviewMouseDown" PreviewMouseUp="Up_PreviewMouseUp"></Button>
-        <Button Name="RightUp" Grid.Column="2" Grid.Row="4" Opacity="0.25" PreviewMouseDown="RightUp_PreviewMouseDown" PreviewMouseUp="RightUp_PreviewMouseUp"></Button>
-        <Button Name="Right" Grid.Column="2" Grid.Row="5" Opacity="0.25" PreviewMouseDown="Right_PreviewMouseDown" PreviewMouseUp="Right_PreviewMouseUp"></Button>
-        <Button Name="RightDown" Grid.Column="2" Grid.Row="6" Opacity="0.25" PreviewMouseDown="RightDown_PreviewMouseDown" PreviewMouseUp="RightDown_PreviewMouseUp"></Button>
-        <Button Name="Down" Grid.Column="1" Grid.Row="6" Opacity="0.25" PreviewMouseDown="Down_PreviewMouseDown" PreviewMouseUp="Down_PreviewMouseUp"></Button>
-        <Button Name="Square" Grid.Column="6" Grid.Row="5" Opacity="0.25" PreviewMouseDown="Square_PreviewMouseDown" PreviewMouseUp="Square_PreviewMouseUp"></Button>
-        <Button Name="Triangle" Grid.Column="7" Grid.Row="4" Opacity="0.25" PreviewMouseDown="Triangle_PreviewMouseDown" PreviewMouseUp="Triangle_PreviewMouseUp"></Button>
-        <Button Name="Circle" Grid.Column="8" Grid.Row="5" Opacity="0.25" PreviewMouseDown="Circle_PreviewMouseDown" PreviewMouseUp="Circle_PreviewMouseUp"></Button>
-        <Button Name="Cross" Grid.Column="7" Grid.Row="6" Opacity="0.25" PreviewMouseDown="Cross_PreviewMouseDown" PreviewMouseUp="Cross_PreviewMouseUp"></Button>
+        <Button Name="L1" Grid.Column="0" Grid.Row="2" Opacity="0.25" PreviewTouchDown="L1_PreviewTouchDown" PreviewTouchUp="L1_PreviewTouchUp"></Button>
+        <Button Name="L2" Grid.Column="0" Grid.Row="1" Opacity="0.25" PreviewTouchDown="L2_PreviewTouchDown" PreviewTouchUp="L2_PreviewTouchUp"></Button>
+        <Button Name="R1" Grid.Column="8" Grid.Row="2" Opacity="0.25" PreviewTouchDown="R1_PreviewTouchDown" PreviewTouchUp="R1_PreviewTouchUp"></Button>
+        <Button Name="R2" Grid.Column="8" Grid.Row="1" Opacity="0.25" PreviewTouchDown="R2_PreviewTouchDown" PreviewTouchUp="R2_PreviewTouchUp"></Button>
+        <Button Name="LStick" Grid.Column="3" Grid.Row="5" Grid.RowSpan="2" Opacity="0" PreviewTouchDown="LStick_PreviewTouchDown" PreviewTouchUp="LStick_PreviewTouchUp"></Button>
+        <Button Name="RStick" Grid.Column="5" Grid.Row="5" Grid.RowSpan="2" Opacity="0" PreviewTouchDown="RStick_PreviewTouchDown" PreviewTouchUp="RStick_PreviewTouchUp"></Button>
+        <Button Name="PlayStation" Grid.Column="4" Grid.Row="5" Opacity="0.25" PreviewTouchDown="PlayStation_PreviewTouchDown" PreviewTouchUp="PlayStation_PreviewTouchUp"></Button>
+        <Button Name="Share" Grid.Column="2" Grid.Row="1" Opacity="0.25" PreviewTouchDown="Share_PreviewTouchDown" PreviewTouchUp="Share_PreviewTouchUp"></Button>
+        <Button Name="Options" Grid.Column="6" Grid.Row="1" Opacity="0.25" PreviewTouchDown="Options_PreviewTouchDown" PreviewTouchUp="Options_PreviewTouchUp"></Button>
+        <Button Name="Left" Grid.Column="0" Grid.Row="5" Opacity="0.25" PreviewTouchDown="Left_PreviewTouchDown" PreviewTouchUp="Left_PreviewTouchUp"></Button>
+        <Button Name="LeftUp" Grid.Column="0" Grid.Row="4" Opacity="0.25" PreviewTouchDown="LeftUp_PreviewTouchDown" PreviewTouchUp="LeftUp_PreviewTouchUp"></Button>
+        <Button Name="LeftDown" Grid.Column="0" Grid.Row="6" Opacity="0.25" PreviewTouchDown="LeftDown_PreviewTouchDown" PreviewTouchUp="LeftDown_PreviewTouchUp"></Button>
+        <Button Name="Up" Grid.Column="1" Grid.Row="4" Opacity="0.25" PreviewTouchDown="Up_PreviewTouchDown" PreviewTouchUp="Up_PreviewTouchUp"></Button>
+        <Button Name="RightUp" Grid.Column="2" Grid.Row="4" Opacity="0.25" PreviewTouchDown="RightUp_PreviewTouchDown" PreviewTouchUp="RightUp_PreviewTouchUp"></Button>
+        <Button Name="Right" Grid.Column="2" Grid.Row="5" Opacity="0.25" PreviewTouchDown="Right_PreviewTouchDown" PreviewTouchUp="Right_PreviewTouchUp"></Button>
+        <Button Name="RightDown" Grid.Column="2" Grid.Row="6" Opacity="0.25" PreviewTouchDown="RightDown_PreviewTouchDown" PreviewTouchUp="RightDown_PreviewTouchUp"></Button>
+        <Button Name="Down" Grid.Column="1" Grid.Row="6" Opacity="0.25" PreviewTouchDown="Down_PreviewTouchDown" PreviewTouchUp="Down_PreviewTouchUp"></Button>
+        <Button Name="Square" Grid.Column="6" Grid.Row="5" Opacity="0.25" PreviewTouchDown="Square_PreviewTouchDown" PreviewTouchUp="Square_PreviewTouchUp"></Button>
+        <Button Name="Triangle" Grid.Column="7" Grid.Row="4" Opacity="0.25" PreviewTouchDown="Triangle_PreviewTouchDown" PreviewTouchUp="Triangle_PreviewTouchUp"></Button>
+        <Button Name="Circle" Grid.Column="8" Grid.Row="5" Opacity="0.25" PreviewTouchDown="Circle_PreviewTouchDown" PreviewTouchUp="Circle_PreviewTouchUp"></Button>
+        <Button Name="Cross" Grid.Column="7" Grid.Row="6" Opacity="0.25" PreviewTouchDown="Cross_PreviewTouchDown" PreviewTouchUp="Cross_PreviewTouchUp"></Button>
     </Grid>
 </Window>
