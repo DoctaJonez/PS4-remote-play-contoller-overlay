@@ -288,6 +288,8 @@ namespace DoctaJonez.Windows.PS4Overlay
             report.SetAxis(DualShock4Axes.LeftThumbY, state.LStickY);
             report.SetAxis(DualShock4Axes.RightThumbX, state.RStickX);
             report.SetAxis(DualShock4Axes.RightThumbY, state.RStickY);
+            report.SetAxis(DualShock4Axes.LeftTrigger, state.L2 ? byte.MaxValue : byte.MinValue);
+            report.SetAxis(DualShock4Axes.RightTrigger, state.R2 ? byte.MaxValue : byte.MinValue);
 
             return report;
         }
