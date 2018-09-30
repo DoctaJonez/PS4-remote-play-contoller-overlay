@@ -687,10 +687,31 @@ namespace DoctaJonez.Windows.PS4Overlay
             _ds4State.LStickY = MassageDelta(y);
         }
 
-        private int _deadzone = 10;
+        private int _deadzone = 1;
 
         private byte MassageDelta(double delta)
         {
+            // if the delta is within the deadzone, set it to zero
+            if (-_deadzone <= delta && delta <= _deadzone)
+            {
+                delta = 0;
+            }
+
+            // remove the deadzone margin from the delta, so the stick doesn't jump 
+            // by the deadzone value once it's out of the deadzone
+            // delta is positive
+            if (0 < delta)
+            {
+                delta = delta - _deadzone;
+            }
+            // delta is negative
+            else if (delta < 0)
+            {
+                delta = delta + _deadzone;
+            }
+
+            delta = delta * 1.5d;
+
             // "zero" is 128
             delta = delta + 128;
 
@@ -701,11 +722,6 @@ namespace DoctaJonez.Windows.PS4Overlay
             else if (delta < byte.MinValue)
             {
                 delta = byte.MinValue;
-            }
-
-            if (-_deadzone <= delta && delta <= _deadzone)
-            {
-                delta = 0;
             }
 
             return (byte)delta;
