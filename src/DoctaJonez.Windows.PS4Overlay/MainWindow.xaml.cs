@@ -232,6 +232,16 @@ namespace DoctaJonez.Windows.PS4Overlay
                 RaiseStateChanged();
             }
         }
+        private bool _touchpad;
+        public bool Touchpad
+        {
+            get => _touchpad;
+            set
+            {
+                _touchpad = value;
+                RaiseStateChanged();
+            }
+        }
         private byte _lStickX = 127;
         public byte LStickX
         {
@@ -273,6 +283,26 @@ namespace DoctaJonez.Windows.PS4Overlay
                 RaiseStateChanged();
             }
         }
+        private bool _thumbLeft = false;
+        public bool ThumbLeft
+        {
+            get => _thumbLeft;
+            set
+            {
+                _thumbLeft = value;
+                RaiseStateChanged();
+            }
+        }
+        private bool _thumbRight = false;
+        public bool ThumbRight
+        {
+            get => _thumbRight;
+            set
+            {
+                _thumbRight = value;
+                RaiseStateChanged();
+            }
+        }
     }
 
     public class ReportFactory
@@ -304,6 +334,10 @@ namespace DoctaJonez.Windows.PS4Overlay
             if (state.PlayStation)
             {
                 yield return DualShock4SpecialButtons.Ps;
+            }
+            if (state.Touchpad)
+            {
+                yield return DualShock4SpecialButtons.Touchpad;
             }
         }
 
@@ -362,6 +396,16 @@ namespace DoctaJonez.Windows.PS4Overlay
             if (state.Options)
             {
                 yield return DualShock4Buttons.Options;
+            }
+
+            if (state.ThumbLeft)
+            {
+                yield return DualShock4Buttons.ThumbLeft;
+            }
+
+            if (state.ThumbRight)
+            {
+                yield return DualShock4Buttons.ThumbRight;
             }
         }
 
@@ -653,6 +697,16 @@ namespace DoctaJonez.Windows.PS4Overlay
             _lStickStart = null;
             _lStickCurrent = null;
 
+            bool leftStickMoved = _leftDeltaMin < (-_deadzone) || _deadzone < _leftDeltaMax;
+
+            if (!leftStickMoved)
+            {
+                _ds4State.ThumbLeft = true;
+                _ds4State.ThumbLeft = false;
+            }
+
+            _leftDeltaMin = 0;
+            _leftDeltaMax = 0;
             _ds4State.LStickX = 127;
             _ds4State.LStickY = 127;
         }
@@ -666,11 +720,26 @@ namespace DoctaJonez.Windows.PS4Overlay
             _rStickCurrent = _rStickStart;
         }
 
+        private double _rightDeltaMin = 0;
+        private double _rightDeltaMax = 0;
+        private double _leftDeltaMin = 0;
+        private double _leftDeltaMax = 0;
+
         private void RStick_PreviewTouchUp(object sender, TouchEventArgs e)
         {
             _rStickStart = null;
             _rStickCurrent = null;
 
+            bool rightStickMoved = _rightDeltaMin < (-_deadzone) || _deadzone < _rightDeltaMax;
+
+            if (!rightStickMoved)
+            {
+                _ds4State.ThumbRight = true;
+                _ds4State.ThumbRight = false;
+            }
+
+            _rightDeltaMin = 0;
+            _rightDeltaMax = 0;
             _ds4State.RStickX = 127;
             _ds4State.RStickY = 127;
         }
@@ -682,6 +751,23 @@ namespace DoctaJonez.Windows.PS4Overlay
 
             var x = _lStickCurrent.Position.X - _lStickStart.Position.X;
             var y = _lStickCurrent.Position.Y - _lStickStart.Position.Y;
+
+            if (x < _leftDeltaMin)
+            {
+                _leftDeltaMin = x;
+            }
+            if (y < _leftDeltaMin)
+            {
+                _leftDeltaMin = y;
+            }
+            if (_leftDeltaMax < x)
+            {
+                _leftDeltaMax = x;
+            }
+            if (_leftDeltaMax < y)
+            {
+                _leftDeltaMax = y;
+            }
 
             _ds4State.LStickX = MassageDelta(x);
             _ds4State.LStickY = MassageDelta(y);
@@ -712,8 +798,8 @@ namespace DoctaJonez.Windows.PS4Overlay
 
             delta = delta * 1.5d;
 
-            // "zero" is 128
-            delta = delta + 128;
+            // "zero" is 127
+            delta = delta + 127;
 
             if (delta > byte.MaxValue)
             {
@@ -735,6 +821,23 @@ namespace DoctaJonez.Windows.PS4Overlay
             var x = _rStickCurrent.Position.X - _rStickStart.Position.X;
             var y = _rStickCurrent.Position.Y - _rStickStart.Position.Y;
 
+            if (x < _rightDeltaMin)
+            {
+                _rightDeltaMin = x;
+            }
+            if (y < _rightDeltaMin)
+            {
+                _rightDeltaMin = y;
+            }
+            if (_rightDeltaMax < x)
+            {
+                _rightDeltaMax = x;
+            }
+            if (_rightDeltaMax < y)
+            {
+                _rightDeltaMax = y;
+            }
+
             _ds4State.RStickX = MassageDelta(x);
             _ds4State.RStickY = MassageDelta(y);
         }
@@ -744,6 +847,21 @@ namespace DoctaJonez.Windows.PS4Overlay
             _ds4State.StateChanged += _ds4State_StateChanged;
 
             _controller.Connect();
+        }
+
+        private void TouchPad_TouchMove(object sender, TouchEventArgs e)
+        {
+
+        }
+
+        private void TouchPad_PreviewTouchUp(object sender, TouchEventArgs e)
+        {
+            _ds4State.Touchpad = false;
+        }
+
+        private void TouchPad_PreviewTouchDown(object sender, TouchEventArgs e)
+        {
+            _ds4State.Touchpad = true;
         }
     }
 }
